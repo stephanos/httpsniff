@@ -1,0 +1,37 @@
+<html ng-app="httpsniff" ng-csp>
+
+  <head>
+    <link href="style/vendor/bootstrap.min.css" rel="stylesheet">
+    <link href="style/vendor/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="style/main.css" rel="stylesheet">
+
+    <script type="text/javascript" src="lib/vendor/purl.js"></script>
+    <script type="text/javascript" src="lib/log.js"></script>
+    <script type="text/javascript" src="lib/netreq.js"></script>
+
+    <script type="text/javascript" src="lib/vendor/angular.js"></script>
+    <script type="text/javascript" src="lib/app.js"></script>
+    <script type="text/javascript" src="lib/services.js"></script>
+    <script type="text/javascript" src="lib/controllers.js"></script>
+  </head>
+
+  <body>
+
+    <div id ="ctrl" ng-controller="RequestCtrl">
+      <table id="requests" class="table table-hover table-striped table-bordered">
+        <tr ng-repeat="req in requests" ng-class="status(req.respStatus())">
+          <td class="method">
+            {{req.reqMethod()}}
+          </td>
+          <td class="url">
+            {{req.reqUrl()}}
+          </td>
+          <td class="action">
+            <button type="button" ng-click="load(req)" class="btn btn-xs btn-primary">Load</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+
+</html>
